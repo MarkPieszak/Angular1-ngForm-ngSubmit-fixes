@@ -15,7 +15,7 @@ This can also be used anywhere to simply run a specific function on the scope th
     </div>
 
 
-## The directive itself:
+## The directive itself (short & sweet)
 
     APP.directive('onEnter', function ($parse) {
         return {
