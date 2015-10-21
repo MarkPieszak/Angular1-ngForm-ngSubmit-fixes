@@ -64,7 +64,7 @@
 
 		var APP = angular.module('app', []);
 
-        APP.directive('onEnter', function ($parse) {
+        APP.directive('onEnter', ['$parse', function ($parse) {
             return {
                 link: function ($scope, $element, $attrs) {
 
@@ -78,7 +78,7 @@
                     });
                 }
             };
-        });
+        }]);
 
 		APP.controller('DemoController', function () {
 			var vm = this;

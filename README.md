@@ -11,13 +11,13 @@ This can also be used anywhere to simply run a specific function on the scope th
 
     <div on-enter="vmMyCtrl.runSomething()">
         <!-- now any input item within this area will call "runSomething()" when Enter is pressed -->
-        <input placeholder="Some textbox" /> 
+        <input placeholder="Some textbox" />
     </div>
 
 
 ## The directive itself (short & sweet)
 
-    APP.directive('onEnter', function ($parse) {
+    APP.directive('onEnter', ['$parse', function ($parse) {
         return {
             link: function ($scope, $element, $attrs) {
 
@@ -31,5 +31,4 @@ This can also be used anywhere to simply run a specific function on the scope th
                 });
             }
         };
-    });
-
+    }]);
