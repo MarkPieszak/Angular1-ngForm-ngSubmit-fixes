@@ -1,4 +1,4 @@
-# ngForm-handle-Enter-Keypress
+# ngForm-handle-Enter-Keypress (No Dependencies)
 
 ### Choose what the Enter key does in any given area in Angular - run any scoped function you want
 
