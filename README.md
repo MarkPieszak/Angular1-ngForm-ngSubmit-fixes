@@ -1,6 +1,8 @@
-# ngForm-handle-Enter-Keypress (No Dependencies)
+# ngForm-handle-Enter-Keypress 
 
-### Choose what the Enter key does in any given area in Angular - run any scoped function you want
+> No jQuery dependency
+
+### Choose what the Enter key does in any given area in Angular - run any scoped function you want 
 
 Helpful with `<ng-form>` tags since they don't automatically handle Enter keys for submitting the form.
 This can also be used anywhere to simply run a specific function on the scope that's passed into the attribute.
