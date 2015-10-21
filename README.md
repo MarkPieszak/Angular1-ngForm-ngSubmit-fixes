@@ -7,15 +7,35 @@ This can also be used anywhere to simply run a specific function on the scope th
 
 >  Check out demo.html to see it in action
 
-## Basic useage:
+### ngForm directive useage: (Automatically calls any input/button with type="submit")
+
+    APP.directive('ngForm', function ($parse) {
+        return {
+            link: function ($scope, $element, $attrs) {
+
+                $element.bind('keyup', function (e) {
+
+                    var keyCode = e.keyCode || e.which;
+
+                    if (keyCode === 13) {
+                        $element.find('[type="submit"]').click();
+                    }
+
+                });
+            }
+        };
+    });
+
+# Specifically tell Angular what to call when Enter is pressed in a form
+
+### Basic useage: (Specify what you want Enter to call)
 
     <div on-enter="vmMyCtrl.runSomething()">
         <!-- now any input item within this area will call "runSomething()" when Enter is pressed -->
         <input placeholder="Some textbox" />
     </div>
 
-
-## The directive itself (short & sweet)
+### The directive itself (short & sweet)
 
     APP.directive('onEnter', ['$parse', function ($parse) {
         return {

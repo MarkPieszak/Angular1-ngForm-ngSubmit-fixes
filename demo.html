@@ -64,6 +64,23 @@
 
 		var APP = angular.module('app', []);
 
+		APP.directive('ngForm', function ($parse) {
+            return {
+                link: function ($scope, $element, $attrs) {
+
+                    $element.bind('keyup', function (e) {
+
+                        var keyCode = e.keyCode || e.which;
+
+                        if (keyCode === 13) {
+                            $element.find('[type="submit"]').click();
+                        }
+
+                    });
+                }
+            };
+        });
+
         APP.directive('onEnter', ['$parse', function ($parse) {
             return {
                 link: function ($scope, $element, $attrs) {
