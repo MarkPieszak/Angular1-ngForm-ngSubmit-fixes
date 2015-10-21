@@ -1,0 +1,101 @@
+<html>
+<head>
+
+	<style type="text/css">
+		* { padding:0; margin:0; }
+	</style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+</head>
+
+<body>
+
+	<div ng-app="app">
+
+		<div ng-controller="DemoController as vmDemo">
+
+            <!-- notice on-enter passing in the same function as the Submit button does below -->
+            <ng-form on-enter="vmDemo.submit(vmDemo.user)" name="popupForm" novalidate>
+
+                <div class="modal-header">
+                    <h3 class="modal-title">ngForm handling Enter keypress events!</h3>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>User Name:</label>
+                        <input ng-model="vmDemo.user.name" autofocus required class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>User Age:</label>
+                        <input ng-model="vmDemo.user.age" required class="form-control" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button ng-click="vmDemo.cancel()"
+                        type="button"
+                        class="button buttonGray">
+                            Cancel
+                    </button>
+
+                    <!-- notice I put vmDemo.submit(vmDemo.user) in the on-enter of the ng-form itself as well to handle Enter keypress -->
+
+                    <button ng-click="vmDemo.submit(vmDemo.user)"
+                        ng-disabled="!popupForm.$valid"
+                        type="submit"
+                        class="button buttonGreen">
+                            Submit New Drug
+                    </button>
+                </div>
+
+            </ng-form>
+
+		</div>
+
+
+	</div>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+
+
+	<script>
+		'use strict';
+
+		var APP = angular.module('app', []);
+
+        APP.directive('onEnter', function ($parse) {
+            return {
+                link: function ($scope, $element, $attrs) {
+
+                    $element.bind('keyup', function (e) {
+                        var keyCode = e.keyCode || e.which;
+
+                        if (keyCode === 13 && $attrs.onEnter) {
+                            $parse($attrs.onEnter)($scope);
+                        }
+
+                    });
+                }
+            };
+        });
+
+		APP.controller('DemoController', function () {
+			var vm = this;
+
+            vm.submit = function (user) {
+                alert('Tada! Stringify\d object: ' + JSON.stringify(user || ''));
+            };
+
+
+		});
+
+	</script>
+
+</body>
+</html>
