@@ -17,7 +17,7 @@
 		<div ng-controller="DemoController as vmDemo">
 
             <!-- notice on-enter passing in the same function as the Submit button does below -->
-            <ng-form on-enter="vmDemo.submit(vmDemo.user)" name="popupForm" novalidate>
+            <ng-form on-enter="vmDemo.submit(vmDemo.user)" name="userForm" novalidate>
 
                 <div class="modal-header">
                     <h3 class="modal-title">ngForm handling Enter keypress events!</h3>
@@ -36,19 +36,14 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button ng-click="vmDemo.cancel()"
-                        type="button"
-                        class="button buttonGray">
-                            Cancel
-                    </button>
 
                     <!-- notice I put vmDemo.submit(vmDemo.user) in the on-enter of the ng-form itself as well to handle Enter keypress -->
 
                     <button ng-click="vmDemo.submit(vmDemo.user)"
-                        ng-disabled="!popupForm.$valid"
+                        ng-disabled="!userForm.$valid"
                         type="submit"
                         class="button buttonGreen">
-                            Submit New Drug
+                            Submit User
                     </button>
                 </div>
 
