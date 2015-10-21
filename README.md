@@ -11,28 +11,44 @@ This can also be used anywhere to simply run a specific function on the scope th
 
     APP.directive('ngForm', function ($parse) {
         return {
-            link: function ($scope, $element, $attrs) {
-
-                $element.bind('keyup', function (e) {
-
-                    var keyCode = e.keyCode || e.which;
-
-                    if (keyCode === 13) {
-                        $element.find('[type="submit"]').click();
-                    }
-
-                });
-            }
+            link: linkFunction
         };
+
+        function linkFunction ($scope, $element, $attrs) {
+            var $submit_button = findSubmitButton();
+
+            $element.bind('keydown', function (e) {
+                var keyCode = e.keyCode || e.which;
+                if (keyCode === 13 && $submit_button) {
+                    $submit_button.click();
+                }
+            });
+
+            function findSubmitButton () {
+                var $buttons = [$element.find('button'), $element.find('input')];
+
+                for (var i = 0; i < $buttons.length; i++) {
+                    for (var n = 0; n < $buttons[i].length; n++) {
+                        var $current = $buttons[i][n];
+                        if ($current.type.toLowerCase() === 'submit') {
+                            return $current;
+                        }
+
+                    }
+                }
+            }
+        }
     });
 
-# Specifically tell Angular what to call when Enter is pressed in a form
+# Tell Angular what to call when Enter is pressed in a form
 
 ### Basic useage: (Specify what you want Enter to call)
 
-    <div on-enter="vmMyCtrl.runSomething()">
-        <!-- now any input item within this area will call "runSomething()" when Enter is pressed -->
+    <div on-enter="vmMyCtrl.save()">
+        <!-- now any input item within this area will call "save()" when Enter is pressed -->
         <input placeholder="Some textbox" />
+
+        <button type="submit" ng-click="vmMyCtrl.save()">SAVE</button>
     </div>
 
 ### The directive itself (short & sweet)

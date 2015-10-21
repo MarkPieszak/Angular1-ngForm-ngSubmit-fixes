@@ -17,7 +17,7 @@
 		<div ng-controller="DemoController as vmDemo">
 
             <!-- notice on-enter passing in the same function as the Submit button does below -->
-            <ng-form on-enter="vmDemo.submit(vmDemo.user)" name="userForm" novalidate>
+            <ng-form name="userForm" novalidate>
 
                 <div class="modal-header">
                     <h3 class="modal-title">ngForm handling Enter keypress events!</h3>
@@ -66,19 +66,35 @@
 
 		APP.directive('ngForm', function ($parse) {
             return {
-                link: function ($scope, $element, $attrs) {
-
-                    $element.bind('keyup', function (e) {
-
-                        var keyCode = e.keyCode || e.which;
-
-                        if (keyCode === 13) {
-                            $element.find('[type="submit"]').click();
-                        }
-
-                    });
-                }
+                link: linkFunction
             };
+
+			function linkFunction ($scope, $element, $attrs) {
+
+				var $submit_button = findSubmitButton();
+
+				$element.bind('keydown', function (e) {
+					var keyCode = e.keyCode || e.which;
+					if (keyCode === 13 && $submit_button) {
+						$submit_button.click();
+					}
+				});
+
+				function findSubmitButton () {
+					var $buttons = [$element.find('button'), $element.find('input')];
+
+					for (var i = 0; i < $buttons.length; i++) {
+						for (var n = 0; n < $buttons[i].length; n++) {
+							var $current = $buttons[i][n];
+							if ($current.type.toLowerCase() === 'submit') {
+								return $current;
+							}
+
+						}
+					}
+				}
+			}
+
         });
 
         APP.directive('onEnter', ['$parse', function ($parse) {
