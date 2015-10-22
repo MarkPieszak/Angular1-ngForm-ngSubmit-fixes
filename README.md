@@ -1,17 +1,17 @@
 # Angular ngForm handle Enter keypress & ngSubmit fix for ngForm
 
-> No jQuery dependency
+> With no jQuery dependency!
 
 # [DEMO : View it in Action!](http://mcpdesigns.github.io/ngForm-handle-Enter-Keypress/)
 
-### Choose what the Enter key does in any given area in Angular - run any scoped function you want
+#### Choose what the Enter key does in any given area in Angular - run any scoped function you want
 
 Helpful with `<ng-form>` tags since they don't automatically handle Enter keys for submitting the form.
 This can also be used anywhere to simply run a specific function on the scope that's passed into the attribute.
 
 >  Check out demo.html to see it in action
 
-### ngForm directive useage: (Automatically calls any input/button with type="submit")
+#### ngForm directive useage: (Automatically calls any input/button with type="submit")
 
     <ng-form>
         <!-- some inputs -->
@@ -21,7 +21,7 @@ This can also be used anywhere to simply run a specific function on the scope th
         </button>
     </ng-form>
 
-### ngSubmit functionality fix for ngForm:
+#### ngSubmit functionality fix for ngForm:
 
     <ng-form ng-submit="vmDemo.submitThisForm()">
         <!-- some inputs -->
@@ -31,7 +31,7 @@ This can also be used anywhere to simply run a specific function on the scope th
     </ng-form>
 
 
-### Handle Enter keypress on any parent item:
+#### Handle Enter keypress on any parent item:
 
     <div on-enter="vmDemo.submitThisForm()">
         <!-- some inputs -->
