@@ -1,4 +1,4 @@
-# Angular ngForm handle Enter keypress & ngSubmit fix for ngForm
+# Angular handle Enter keypress in any area & ngForm / ngSubmit fixes
 
 > With no jQuery dependency!
 
