@@ -1,6 +1,7 @@
 # Angular handle Enter keypress in any area & ngForm / ngSubmit fixes
 
 > With no jQuery dependency!
+> Use ngForm as if it was a normal form (with the Enter key & ngSubmit functionality fixed!)
 
 ## [DEMO : View it in Action!](http://mcpdesigns.github.io/ngForm-handle-Enter-Keypress/)
 
