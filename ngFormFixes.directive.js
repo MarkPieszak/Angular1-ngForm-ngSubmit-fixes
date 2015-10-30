@@ -9,6 +9,7 @@ module.directive('ngForm', function ($parse) {
 
         var $submit_button = findSubmitButton();
 
+        // bind Enter key
         $element.bind('keydown', function (e) {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13) {
@@ -22,6 +23,7 @@ module.directive('ngForm', function ($parse) {
             }
         });
 
+        // bind Submit click to run itself or ngSubmit
         angular.element($submit_button).bind('click', function (e) {
             if ($attrs.ngSubmit && angular.element(this).attr('ng-click') === undefined) {
                 $parse($attrs.ngSubmit)($scope);
