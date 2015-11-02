@@ -17,36 +17,36 @@
 		<div ng-controller="DemoController as vmDemo">
 
 			<h1>Example 1:</h1>
-
-            <ng-form name="userForm" ng-submit="vmDemo.submit(vmDemo.user)" novalidate>
-
-                <div class="modal-header">
-                    <h3 class="modal-title">ngForm handling Enter keypress & button click using ngSubmit</h3>
-                </div>
-
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>User Name:</label>
-                        <input ng-model="vmDemo.user.name" autofocus required class="form-control" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>User Age:</label>
-                        <input ng-model="vmDemo.user.age" required class="form-control" />
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-
-                    <button
-                        ng-disabled="!userForm.$valid"
-                        type="submit"
-                        class="button buttonGreen">
-                            Submit User
-                    </button>
-                </div>
-
-            </ng-form>
+			
+			<ng-form name="userForm" ng-submit="vmDemo.submit(vmDemo.user)" novalidate>
+			
+			<div class="modal-header">
+			    <h3 class="modal-title">ngForm handling Enter keypress & button click using ngSubmit</h3>
+			</div>
+			
+			<div class="modal-body">
+			    <div class="form-group">
+			        <label>User Name:</label>
+			        <input ng-model="vmDemo.user.name" autofocus required class="form-control" />
+			    </div>
+			
+			    <div class="form-group">
+			        <label>User Age:</label>
+			        <input ng-model="vmDemo.user.age" required class="form-control" />
+			    </div>
+			</div>
+			
+			<div class="modal-footer">
+			
+			    <button
+			        ng-disabled="!userForm.$valid"
+			        type="submit"
+			        class="button buttonGreen">
+			            Submit User
+			    </button>
+			</div>
+			
+			</ng-form>
 
 			<h1>Example 2:</h1>
 
@@ -70,8 +70,7 @@
 
                 <div class="modal-footer">
 
-                    <button
-			ng-click="vmDemo.submit(vmDemo.user)"
+                    <button ng-click="vmDemo.submit(vmDemo.user)"
                         ng-disabled="!userForm.$valid"
                         type="submit"
                         class="button buttonGreen">
@@ -81,7 +80,7 @@
 
             </ng-form>
 
-	<h1>Example 3:</h1>
+			<h1>Example 3:</h1>
 
 			<div on-enter="vmDemo.submit(vmDemo.user)">
 
@@ -127,16 +126,20 @@
 
 	<script>
 		'use strict';
-
-		var APP = angular.module('app', ['ngFormFixes']);
-
-		APP.controller('DemoController', function () {
-			var vm = this;
-
-            vm.submit = function (user) {
-                alert('Tada! Stringify\d object: ' + JSON.stringify(user || ''));
-            };
-
+		
+		;(function () {
+	
+			var APP = angular.module('app', ['ngFormFixes']);
+	
+			APP.controller('DemoController', function () {
+				var vm = this;
+	
+	            vm.submit = function (user) {
+	                alert('Tada! Stringify\d object: ' + JSON.stringify(user || ''));
+	            };
+	
+			});
+		
 		});
 
 	</script>
