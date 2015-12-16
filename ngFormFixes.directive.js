@@ -53,6 +53,7 @@ module.directive('onEnter', ['$parse', function ($parse) {
         link: function ($scope, $element, $attrs) {
 
             $element.bind('keyup', function (e) {
+
                 var keyCode = e.keyCode || e.which;
 
                 if (keyCode === 13 && $attrs.onEnter) {
