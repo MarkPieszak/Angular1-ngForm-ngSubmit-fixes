@@ -15,10 +15,10 @@ module.directive('ngForm', function ($parse) {
             if (keyCode === 13) {
                 if ($attrs.ngSubmit) {
                     $parse($attrs.ngSubmit)($scope);
-                    return;
-                }
-                if ($submit_button) {
+                    e.stopPropagation();
+                } else if ($submit_button) {
                     $submit_button.click();
+                    e.stopPropagation();
                 }
             }
         });
@@ -27,7 +27,7 @@ module.directive('ngForm', function ($parse) {
         angular.element($submit_button).bind('click', function (e) {
             if ($attrs.ngSubmit && angular.element(this).attr('ng-click') === undefined) {
                 $parse($attrs.ngSubmit)($scope);
-                return;
+                e.stopPropagation();
             }
         });
 
