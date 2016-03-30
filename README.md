@@ -4,7 +4,7 @@
 
 > With no jQuery dependency!
 
-## [DEMO : View it in Action!](http://mcpdesigns.github.io/ngForm-handle-Enter-Keypress/)
+## [DEMO : View it in Action!](http://markpieszak.github.io/ngForm-handle-Enter-Keypress/)
 
 #### Choose what the Enter key does in any given area in Angular - run any scoped function you want
 
