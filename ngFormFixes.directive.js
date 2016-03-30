@@ -37,7 +37,7 @@ module.directive('ngForm', function ($parse) {
             for (var i = 0; i < $buttons.length; i++) {
                 for (var n = 0; n < $buttons[i].length; n++) {
                     var $current = $buttons[i][n];
-                    if ($current.type.toLowerCase() === 'submit') {
+                    if ($current.getAttribute('type') && $current.getAttribute('type').toLowerCase() === 'submit') {
                         return $current;
                     }
 
