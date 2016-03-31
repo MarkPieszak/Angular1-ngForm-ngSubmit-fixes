@@ -1,6 +1,6 @@
 var module = angular.module('ngFormFixes', []);
 
-module.directive('ngForm', function ($parse) {
+module.directive('ngForm', function ($parse, $timeout) {
     return {
         link: linkFunction
     };
@@ -28,6 +28,11 @@ module.directive('ngForm', function ($parse) {
             if ($attrs.ngSubmit && angular.element(this).attr('ng-click') === undefined) {
                 $parse($attrs.ngSubmit)($scope);
                 e.stopPropagation();
+                
+                $timeout(function () {
+                    $scope[$attrs.ngForm].$submitted = true;
+                    $element.addClass('ng-submitted');
+                });
             }
         });
 
