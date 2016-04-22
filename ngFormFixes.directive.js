@@ -36,6 +36,7 @@ module.directive('ngForm', function ($parse, $timeout) {
             }
         });
 
+        // internal
         function findSubmitButton () {
             var $buttons = [$element.find('button'), $element.find('input')];
 
