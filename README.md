@@ -1,4 +1,6 @@
-# Angular handle Enter keypress in any area & ngForm / ngSubmit fixes
+# Angular 1.* ngForm fixes
+
+## Fix `<ng-form>` Enter keypress & `<ng-submit>` issues
 
 > ng-form fixes to enable them to work the way a normal form tag does
 
