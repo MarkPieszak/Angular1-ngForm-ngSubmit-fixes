@@ -1,6 +1,6 @@
-# Angular 1.* ngForm fixes
+# Angular 1.* ng-form & ng-submit upgrades.
 
-## Fix `<ng-form>` Enter keypress & `<ng-submit>` issues
+## Fix `<ng-form>` Enter keypress & `<ng-submit>` functionality.
 
 > ng-form fixes to enable them to work the way a normal form tag does
 
