@@ -4,6 +4,8 @@
 
 > With no jQuery dependency!
 
+> Helpful for ASP.NET Webforms sites using Angular1.* since nested `<form>` tags aren't allowed.
+
 ## [DEMO : View it in Action!](http://markpieszak.github.io/Angular1-ngForm-ngSubmit-fixes/)
 
 #### Choose what the Enter key does in any given area in Angular - run any scoped function you want
