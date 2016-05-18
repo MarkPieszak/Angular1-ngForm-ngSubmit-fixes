@@ -30,7 +30,9 @@ module.directive('ngForm', function ($parse, $timeout) {
                 e.stopPropagation();
                 
                 $timeout(function () {
-                    $scope[$attrs.ngForm].$submitted = true;
+                    if ($scope[$attrs.ngForm || $attrs.name]) { 
+                        $scope[$attrs.ngForm || $attrs.name].$submitted = true;
+                    }
                     $element.addClass('ng-submitted');
                 });
             }
