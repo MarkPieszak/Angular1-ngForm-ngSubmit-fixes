@@ -14,7 +14,7 @@ module.directive('ngForm', function ($parse, $timeout) {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13) {
                 if ($attrs.ngSubmit) {
-                    $parse($attrs.ngSubmit)($scope);
+                    $parse($attrs.ngSubmit)($scope, { $event: e });
                     e.stopPropagation();
                 } else if ($submit_button) {
                     $submit_button.click();
@@ -26,7 +26,7 @@ module.directive('ngForm', function ($parse, $timeout) {
         // bind Submit click to run itself or ngSubmit
         angular.element($submit_button).bind('click', function (e) {
             if ($attrs.ngSubmit && angular.element(this).attr('ng-click') === undefined) {
-                $parse($attrs.ngSubmit)($scope);
+                $parse($attrs.ngSubmit)($scope, { $event: e });
                 e.stopPropagation();
                 
                 $timeout(function () {
@@ -65,7 +65,7 @@ module.directive('onEnter', ['$parse', function ($parse) {
                 var keyCode = e.keyCode || e.which;
 
                 if (keyCode === 13 && $attrs.onEnter) {
-                    $parse($attrs.onEnter)($scope);
+                    $parse($attrs.onEnter)($scope, { $event: e });
                 }
 
             });
