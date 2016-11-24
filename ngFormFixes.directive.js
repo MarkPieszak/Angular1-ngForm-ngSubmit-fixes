@@ -1,6 +1,6 @@
 var module = angular.module('ngFormFixes', []);
 
-module.directive('ngForm', function ($parse, $timeout) {
+module.directive('ngForm', ['$parse', '$timeout', function ($parse, $timeout) {
     return {
         link: linkFunction
     };
@@ -54,7 +54,7 @@ module.directive('ngForm', function ($parse, $timeout) {
         }
     }
 
-});
+}]);
 
 module.directive('onEnter', ['$parse', function ($parse) {
     return {
