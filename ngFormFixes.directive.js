@@ -16,9 +16,11 @@ module.directive('ngForm', ['$parse', '$timeout', function ($parse, $timeout) {
                 if ($attrs.ngSubmit) {
                     $parse($attrs.ngSubmit)($scope, { $event: e });
                     e.stopPropagation();
+                    e.preventDefault();
                 } else if ($submit_button) {
                     $submit_button.click();
                     e.stopPropagation();
+                    e.preventDefault();
                 }
             }
         });
@@ -28,6 +30,7 @@ module.directive('ngForm', ['$parse', '$timeout', function ($parse, $timeout) {
             if ($attrs.ngSubmit && angular.element(this).attr('ng-click') === undefined) {
                 $parse($attrs.ngSubmit)($scope, { $event: e });
                 e.stopPropagation();
+                e.preventDefault();
                 
                 $timeout(function () {
                     if ($scope[$attrs.ngForm || $attrs.name]) { 
