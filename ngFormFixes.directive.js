@@ -13,14 +13,17 @@ module.directive('ngForm', ['$parse', '$timeout', function ($parse, $timeout) {
         $element.bind('keydown', function (e) {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13) {
-                if ($attrs.ngSubmit) {
-                    $parse($attrs.ngSubmit)($scope, { $event: e });
-                    e.stopPropagation();
-                    e.preventDefault();
-                } else if ($submit_button) {
-                    $submit_button.click();
-                    e.stopPropagation();
-                    e.preventDefault();
+                var nodeType = e.target.nodeName.toLowerCase();
+                if (nodeType == 'input') {
+                    if ($attrs.ngSubmit) {
+                        $parse($attrs.ngSubmit)($scope, { $event: e });
+                        e.stopPropagation();
+                        e.preventDefault();
+                    } else if ($submit_button) {
+                        $submit_button.click();
+                        e.stopPropagation();
+                        e.preventDefault();
+                    }
                 }
             }
         });
